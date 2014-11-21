@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="没有登录"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/loginUser1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="张三登录" />
+
+    <Button
+        android:id="@+id/loginUser2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="李四登录" />
+
+    <Button
+        android:id="@+id/chatToUser1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="和张三聊天" />
+
+    <Button
+        android:id="@+id/chatToUser2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="和李四聊天" />
+
+</LinearLayout>
+
