@@ -51,6 +51,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
       ChatService.goUserChat(this, App.userIds[1]);
     } else {
       ChatService.closeSession();
+      finish();
     }
   }
 }

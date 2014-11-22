@@ -14,15 +14,16 @@ public class App extends Application {
       "http://ac-x3o016bx.qiniudn.com/3aRUu3nxaN6hyJyJ3tMbxnG6scAGEeCK41uFYo1c"};
   public static String[] names = new String[]{"张三", "李四"};
   public static String[] userIds = new String[]{"1", "2"};
+  public static boolean debug = true;
 
   @Override
   public void onCreate() {
     super.onCreate();
     AVOSCloud.initialize(this, "xcalhck83o10dntwh8ft3z5kvv0xc25p6t3jqbe5zlkkdsib", "m9fzwse7od89gvcnk1dmdq4huprjvghjtiug1u2zu073zn99");
     AVInstallation.getCurrentInstallation().saveInBackground();
-    //AVOSCloud.setDebugLogEnabled(true);
-
-    ChatService.init(this, new UserHelper() {
+    AVOSCloud.setDebugLogEnabled(debug);
+    ChatService.init(this);
+    ChatService.setUserHelper(new UserHelper() {
       @Override
       public String getDisplayName(String userId) {
         if (userId.equals(userIds[0])) {
@@ -41,7 +42,7 @@ public class App extends Application {
         }
       }
     });
-    ChatService.showIconAtChatRoom = false;
-    ChatService.useSignature = false;
+    ChatService.setShowIconAtChatRoom(false);
+    ChatService.setUseSignature(false);
   }
 }

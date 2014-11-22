@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import com.avos.avoscloud.AVUser;
 
 /**
  * Created by lzw on 14/11/22.
