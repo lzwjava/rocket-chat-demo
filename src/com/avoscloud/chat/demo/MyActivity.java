@@ -10,7 +10,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
   /**
    * Called when the activity is first created.
    */
-  View login1, login2, chatTo1, chatTo2;
+  View chatTo1, chatTo2, logout;
   TextView textView;
 
   @Override
@@ -18,16 +18,25 @@ public class MyActivity extends Activity implements View.OnClickListener {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
     findView();
+    String userId = getIntent().getStringExtra(LoginActivity.USER_ID);
+    if (userId.equals(App.userIds[0])) {
+      chatTo1.setVisibility(View.GONE);
+      chatTo2.setVisibility(View.VISIBLE);
+      textView.setText(App.names[0] + "登录");
+      ChatService.openSession(App.userIds[0]);
+    } else {
+      ChatService.openSession(App.userIds[1]);
+      textView.setText(App.names[1] + "登录");
+      chatTo1.setVisibility(View.VISIBLE);
+      chatTo2.setVisibility(View.GONE);
+    }
   }
 
   private void findView() {
-    login1 = findViewById(R.id.loginUser1);
-    login2 = findViewById(R.id.loginUser2);
     chatTo1 = findViewById(R.id.chatToUser1);
     chatTo2 = findViewById(R.id.chatToUser2);
     textView = (TextView) findViewById(R.id.textView);
-    login1.setOnClickListener(this);
-    login2.setOnClickListener(this);
+    logout = findViewById(R.id.logout);
     chatTo1.setOnClickListener(this);
     chatTo2.setOnClickListener(this);
   }
@@ -36,18 +45,12 @@ public class MyActivity extends Activity implements View.OnClickListener {
   @Override
   public void onClick(View v) {
     int id = v.getId();
-    if (id == R.id.loginUser1) {
-      ChatService.closeSession();
-      ChatService.openSession(App.userIds[0]);
-      textView.setText(App.names[0] + "登录");
-    } else if (id == R.id.loginUser2) {
-      ChatService.closeSession();
-      ChatService.openSession(App.userIds[1]);
-      textView.setText(App.names[1] + "登录");
-    } else if (id == R.id.chatToUser1) {
+    if (id == R.id.chatToUser1) {
       ChatService.goUserChat(this, App.userIds[0]);
     } else if (id == R.id.chatToUser2) {
       ChatService.goUserChat(this, App.userIds[1]);
+    } else {
+      ChatService.closeSession();
     }
   }
 }

@@ -8,20 +8,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="没有登录"
         android:gravity="center" />
-
-    <Button
-        android:id="@+id/loginUser1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="张三登录" />
-
-    <Button
-        android:id="@+id/loginUser2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="李四登录" />
 
     <Button
         android:id="@+id/chatToUser1"
@@ -34,6 +21,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="和李四聊天" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注销"/>
 
 </LinearLayout>
 
